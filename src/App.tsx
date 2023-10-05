@@ -1,21 +1,9 @@
 import './App.css';
-import { useEffect, useState } from 'react';
 import { BoardComponent } from 'components/Board';
-import { Board } from 'models/Board';
+import { useRestartBoard } from './hooks';
 
 function App() {
-  const [board, setBoard] = useState<Board>(new Board());
-
-  const restart = () => {
-    const newBoard = new Board();
-    newBoard.initCells();
-    newBoard.addFigures();
-    setBoard(newBoard);
-  };
-
-  useEffect(() => {
-    restart();
-  }, []);
+  const { board, setBoard } = useRestartBoard();
 
   return (
     <div className="app">

@@ -75,4 +75,20 @@ export class Board {
     new King(COLORS.BLACK, this.getCell(4, 0));
     new King(COLORS.WHITE, this.getCell(4, 7));
   }
+
+  public highlightCells(selectedCell: Cell | null) {
+    for (let i = 0; i < this.cells.length; i++) {
+      const row = this.cells[i];
+      for (let j = 0; j < row.length; j++) {
+        const target = row[j];
+        target.available = !!selectedCell?.figure?.canMove(target);
+      }
+    }
+  }
+
+  public getCopyBoard(): Board {
+    const newBoard = new Board();
+    newBoard.cells = this.cells;
+    return newBoard;
+  }
 }
