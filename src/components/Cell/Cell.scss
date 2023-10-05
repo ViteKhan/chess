@@ -1,0 +1,17 @@
+@import 'styles/variables';
+
+.cell {
+  width: $CELL_SIZE;
+  height: $CELL_SIZE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.black {
+  background: $BLACK;
+}
+
+.white {
+  background: $WHITE;
+}

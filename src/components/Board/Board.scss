@@ -1,0 +1,11 @@
+@import 'styles/variables';
+
+.board {
+  width: calc(#{$CELL_SIZE} * 8 + #{$BOARD_BORDER} * 2);
+  height: calc(#{$CELL_SIZE} * 8 + #{$BOARD_BORDER} * 2);
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border: $BOARD_BORDER solid $BROWN;
+  border-radius: $BOARD_BORDER;
+}
