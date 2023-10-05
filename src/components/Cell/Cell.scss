@@ -22,7 +22,10 @@
   background: $WHITE;
 }
 
-// TODO fix styles
 .selected {
-  background: red;
+  background: $ORANGE;
+}
+
+.available {
+  background: $GREEN;
 }

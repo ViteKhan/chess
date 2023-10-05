@@ -11,12 +11,17 @@ interface CellComponentProps {
 }
 
 export const CellComponent: FC<CellComponentProps> = ({ cell, selectedCell, isSelected, onClick }) => {
+  // I know that, here I could use classnames package
+  const className = [
+    'cell',
+    cell.color, isSelected ? 'selected' : '',
+    cell.available && cell.figure ? 'available' : '',
+  ].join(' ');
+
   return (
     <div
-      className={['cell', cell.color, isSelected ? 'selected' : ''].join(' ')}
+      className={className}
       onClick={() => onClick(cell)}
-      // TODO fix styles
-      style={{ background: cell.available && cell.figure ? 'green' : '' }}
     >
       {cell.available && !cell.figure && <AvailableCell cell={selectedCell}/>}
       {cell.figure?.logo && <img src={cell.figure.logo} alt={cell.figure.name} title={cell.figure.name} />}
