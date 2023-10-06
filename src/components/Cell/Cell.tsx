@@ -14,7 +14,8 @@ export const CellComponent: FC<CellComponentProps> = ({ cell, selectedCell, isSe
   // I know that, here I could use classnames package
   const className = [
     'cell',
-    cell.color, isSelected ? 'selected' : '',
+    cell.color,
+    isSelected ? 'selected' : '',
     cell.available && cell.figure ? 'available' : '',
   ].join(' ');
 

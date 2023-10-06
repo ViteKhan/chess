@@ -1,14 +1,14 @@
 export enum COLORS {
-  WHITE = 'white',
-  BLACK = 'black',
+  WHITE = 'White',
+  BLACK = 'Black',
 }
 
 export enum FIGURES {
-  FIGURE = 'figure',
-  PAWN = 'pawn',
-  ROOK = 'rook',
-  BISHOP = 'bishop',
-  KNIGHT = 'knight',
-  QUEEN = 'queen',
-  KING = 'king',
+  FIGURE = 'Figure',
+  PAWN = 'Pawn',
+  ROOK = 'Rook',
+  BISHOP = 'Bishop',
+  KNIGHT = 'Knight',
+  QUEEN = 'Queen',
+  KING = 'King',
 }
