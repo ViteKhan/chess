@@ -5,20 +5,10 @@
   justify-content: center;
   flex-direction: column;
   gap: 10px;
-}
-
-.text {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.btnWrapper {
-  display: flex;
-  justify-content: center;
 
   & > button {
     display: flex;
+    align-self: center;
     align-items: center;
     justify-content: center;
     gap: 5px;
@@ -37,4 +27,10 @@
     background: $PRIMARY;
     color: $MAIN_BACKGROUND;
   }
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }

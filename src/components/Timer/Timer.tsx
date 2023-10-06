@@ -29,9 +29,7 @@ export const Timer: FC<TimerProps> = ({ currentPlayer, restart }) => {
         <p>White - {whiteTime}</p>
         {currentPlayer.color === COLORS.WHITE && <ArrowIcon/>}
       </div>
-      <div className="btnWrapper">
-        <button onClick={onRestart}>Restart game <RestartIcon/></button>
-      </div>
+      <button onClick={onRestart}>Restart game <RestartIcon/></button>
     </div>
   );
 };
