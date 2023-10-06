@@ -86,7 +86,7 @@ export class Board {
     }
   }
 
-  public getCopyBoard(): Board {
+  public getCopyBoard() {
     const newBoard = new Board();
     newBoard.cells = this.cells;
     return newBoard;

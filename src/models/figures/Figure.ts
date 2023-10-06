@@ -18,11 +18,19 @@ export class Figure {
     this.id = Math.random();
   }
 
-  canMove = (target: Cell): boolean => {
-    return true;
-  };
+  public canMove(target: Cell) {
+    if (target.figure?.color === this.color) {
+      return false;
+    }
 
-  moveFigure = (target: Cell) => {
+    if (target.figure?.name === FIGURES.KING) {
+      return false;
+    }
+
+    return true;
+  }
+
+  moveFigure(target: Cell) {
 
   };
 }

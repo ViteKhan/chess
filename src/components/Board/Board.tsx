@@ -1,7 +1,7 @@
 import './Board.scss';
 import { Board } from 'models/Board';
 import { FC, Fragment } from 'react';
-import { useSelectedCell, useUpdateBoard } from 'hooks';
+import { useHighlightCellsAndUpdateBoard } from 'hooks';
 import { CellComponent } from '../Cell';
 
 interface BoardComponentProps {
@@ -10,8 +10,7 @@ interface BoardComponentProps {
 }
 
 export const BoardComponent: FC<BoardComponentProps> = ({ board, setBoard }) => {
-  const { selectedCell, onSelectCellHandler } = useSelectedCell();
-  useUpdateBoard(board, setBoard, selectedCell);
+  const { selectedCell, onSelectCellHandler } = useHighlightCellsAndUpdateBoard(board, setBoard);
 
   return (
     <div className="board">
