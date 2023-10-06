@@ -4,8 +4,8 @@ import { LostFigures } from '../LostFigures';
 import { Timer } from '../Timer';
 
 export const Chess = () => {
-  const { board, setBoard, restart } = useRestartBoard();
-  const { currentPlayer, swapPlayer } = usePlayers();
+  const { currentPlayer, swapPlayer, setCurrentPlayer } = usePlayers();
+  const { board, setBoard, restart } = useRestartBoard(setCurrentPlayer);
 
   return (
     <>

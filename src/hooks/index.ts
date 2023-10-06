@@ -4,19 +4,20 @@ import { useEffect, useRef, useState } from 'react';
 import { Player } from 'models/Player';
 import { COLORS } from 'types';
 
-export const useRestartBoard = () => {
+export const useRestartBoard = (setCurrentPlayer: (player: Player) => void) => {
   const [board, setBoard] = useState<Board>(new Board());
 
   const restart = () => {
     const newBoard = new Board();
     newBoard.initCells();
     newBoard.addFigures();
+    setCurrentPlayer(new Player(COLORS.WHITE));
     setBoard(newBoard);
   };
 
   useEffect(() => {
     restart();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return { board, setBoard, restart };
 };
@@ -30,7 +31,7 @@ export const usePlayers = () => {
     setCurrentPlayer(currentPlayer?.color === COLORS.WHITE ? blackPlayer : whitePlayer);
   };
 
-  return { currentPlayer, swapPlayer };
+  return { currentPlayer, swapPlayer, setCurrentPlayer };
 };
 
 interface UseSelectedCellProps {
