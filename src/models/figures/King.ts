@@ -16,6 +16,25 @@ export class King extends Figure {
       return false;
     }
 
-    return true;
+    const isCanMoveBottomYAxis = target.y === this.cell.y + 1;
+    const isCanMoveUpYAxis = target.y === this.cell.y - 1;
+    const isXAxis = target.x === this.cell.x;
+    const isYAxis = target.y === this.cell.y;
+    const isCanMoveRightXAxis = target.x === this.cell.x + 1;
+    const isCanMoveLeftXAxis = target.x === this.cell.x - 1;
+
+    const isVerticalMove = (isCanMoveBottomYAxis || isCanMoveUpYAxis) && isXAxis;
+    const isHorizontalMove = (isCanMoveRightXAxis || isCanMoveLeftXAxis) && isYAxis;
+    const isLeftDiagonal = (isCanMoveLeftXAxis && isCanMoveBottomYAxis)
+      || (isCanMoveLeftXAxis && isCanMoveUpYAxis);
+    const isRightDiagonal = (isCanMoveRightXAxis && isCanMoveBottomYAxis)
+      || (isCanMoveRightXAxis && isCanMoveUpYAxis);
+
+    if (isVerticalMove || isHorizontalMove || isLeftDiagonal || isRightDiagonal) {
+      return true;
+    }
+
+    return false;
   }
+
 }

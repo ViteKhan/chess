@@ -31,9 +31,9 @@ export class Pawn extends Figure {
     }
 
     const isDiagonalUp = target.y === this.cell.y + direction;
-    const isDiagonalUBottom = target.x === this.cell.x + 1 || target.x === this.cell.x - 1;
+    const isDiagonalBottom = target.x === this.cell.x + 1 || target.x === this.cell.x - 1;
 
-    if(isDiagonalUp && isDiagonalUBottom && this.cell.isEnemy(target)) {
+    if (isDiagonalUp && isDiagonalBottom && this.cell.isEnemy(target)) {
       return true;
     }
 
