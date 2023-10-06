@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { Chess } from 'components/Chess';
 
 function App() {

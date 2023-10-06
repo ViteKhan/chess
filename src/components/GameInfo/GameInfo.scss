@@ -1,0 +1,16 @@
+@import 'styles/variables';
+
+.gameInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px solid ;
+  padding: 15px;
+  border-radius: 10px;
+  min-width: 310px;
+}
+
+.player {
+  display: flex;
+  align-items: center;
+}

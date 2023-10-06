@@ -111,9 +111,12 @@ export const useTimer = (currentPlayer: Player, restart: () => void) => {
   }, [currentPlayer]);  // eslint-disable-line react-hooks/exhaustive-deps
 
   const onRestart = () => {
-    setBlackTime(300);
-    setWhiteTime(300);
-    restart();
+    const confirmed = window.confirm('Are you sure you want to restart?');
+    if (confirmed) {
+      setBlackTime(300);
+      setWhiteTime(300);
+      restart();
+    }
   };
 
   return { whiteTime, blackTime, onRestart };

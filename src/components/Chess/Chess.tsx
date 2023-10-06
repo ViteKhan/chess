@@ -1,7 +1,7 @@
 import { usePlayers, useRestartBoard } from 'hooks';
 import { BoardComponent } from '../Board';
+import { GameInfo } from '../GameInfo';
 import { LostFigures } from '../LostFigures';
-import { Timer } from '../Timer';
 
 export const Chess = () => {
   const { currentPlayer, swapPlayer, setCurrentPlayer } = usePlayers();
@@ -9,7 +9,7 @@ export const Chess = () => {
 
   return (
     <>
-      <Timer currentPlayer={currentPlayer} restart={restart}/>
+      <GameInfo currentPlayer={currentPlayer} restart={restart}/>
       <BoardComponent
         board={board}
         setBoard={setBoard}

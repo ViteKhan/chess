@@ -1,0 +1,18 @@
+@import 'styles/variables';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  font-family: 'Verdana', Sans-serif;
+  color: $PRIMARY;
+  background: $MAIN_BACKGROUND;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+}
