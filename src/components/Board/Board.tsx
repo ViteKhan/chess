@@ -1,16 +1,18 @@
 import './Board.scss';
 import { Board } from 'models/Board';
 import { FC, Fragment } from 'react';
-import { useHighlightCellsAndUpdateBoard, usePlayers } from 'hooks';
+import { useHighlightCellsAndUpdateBoard } from 'hooks';
+import { Player } from 'models/Player';
 import { CellComponent } from '../Cell';
 
 interface BoardComponentProps {
   board: Board;
   setBoard: (board: Board) => void;
+  currentPlayer: Player;
+  swapPlayer: () => void;
 }
 
-export const BoardComponent: FC<BoardComponentProps> = ({ board, setBoard }) => {
-  const { currentPlayer, swapPlayer } = usePlayers();
+export const BoardComponent: FC<BoardComponentProps> = ({ board, setBoard, currentPlayer, swapPlayer }) => {
   const { selectedCell, onSelectCellHandler } = useHighlightCellsAndUpdateBoard({
     board,
     setBoard,
