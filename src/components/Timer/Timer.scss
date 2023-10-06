@@ -4,14 +4,14 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: 10px;
+  gap: $GAP_10;
 
   & > button {
     display: flex;
     align-self: center;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: $GAP_5;
     cursor: pointer;
     padding: 10px 20px;
     border-radius: 5px;
@@ -32,5 +32,6 @@
 .text {
   display: flex;
   align-items: center;
-  gap: 10px;
+  min-height: 30px;
+  gap: $GAP_10;
 }

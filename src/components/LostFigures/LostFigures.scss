@@ -1,6 +1,16 @@
+@import 'styles/variables';
+
 .lost {
-  height: calc(50vh - 60px);
-  padding: 30px;
-  margin-left: 50px;
-  background: lightgray;
+  display: flex;
+  flex-direction: column;
+  gap: $GAP_10;
+  height: 450px;
+  padding: $GAP_15;
+  background: #B3BAC2;
+  border: 1px solid $PRIMARY;
+  border-radius: $BOARD_BORDER;
+
+  & > ol {
+    padding-left: 25px;
+  }
 }

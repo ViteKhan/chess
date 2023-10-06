@@ -3,10 +3,10 @@
 .gameInfo {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  border: 1px solid ;
-  padding: 15px;
-  border-radius: 10px;
+  gap: $GAP_15;
+  border: 1px solid $PRIMARY;
+  padding: $GAP_15;
+  border-radius: $BOARD_BORDER;
   min-width: 310px;
 }
 

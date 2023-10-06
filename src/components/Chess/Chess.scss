@@ -1,0 +1,13 @@
+@import 'styles/variables';
+
+.lostFigures {
+  display: flex;
+  flex-direction: column;
+  gap: $GAP_5;
+  align-items: center;
+}
+
+.lostContainer {
+  display: flex;
+  gap: $GAP_5;
+}
