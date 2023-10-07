@@ -23,10 +23,6 @@ export class Figure {
       return false;
     }
 
-    if (target.figure?.name === FIGURES.KING) {
-      return false;
-    }
-
     return true;
   }
 
