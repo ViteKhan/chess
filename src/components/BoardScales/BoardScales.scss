@@ -1,0 +1,28 @@
+.boardScales {
+  display: flex;
+}
+
+.letters {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.letterLabel {
+  flex: 1;
+  text-align: center;
+  font-size: 16px;
+}
+
+.numbers {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 10px;
+}
+
+.numberLabel {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  font-size: 16px;
+}
