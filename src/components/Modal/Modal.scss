@@ -1,0 +1,27 @@
+@import 'styles/variables';
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+}
+
+.modalContent {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  background-color: $MAIN_BACKGROUND;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid $PRIMARY;
+  max-width: 400px;
+  border-radius: $BOARD_BORDER;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}

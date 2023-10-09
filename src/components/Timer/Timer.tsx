@@ -1,19 +1,19 @@
-import { useTimer } from 'hooks';
 import { Player } from 'models/Player';
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { ReactComponent as TimerIcon } from '../../assets/icons/timer.svg';
 import { ReactComponent as ArrowIcon } from '../../assets/icons/arrow.svg';
-import { ReactComponent as RestartIcon } from '../../assets/icons/restart.svg';
 import { COLORS } from 'types';
 import './Timer.scss';
+import { RestartButton } from '../RestartButton';
 
 interface TimerProps {
   currentPlayer: Player;
+  whiteTime: number;
+  blackTime: number;
+  onRestartGame: () => void;
 }
 
-export const Timer: FC<TimerProps> = ({ currentPlayer }) => {
-  const { blackTime, whiteTime, onRestartGame } = useTimer();
-
+export const Timer: FC<TimerProps> = ({ currentPlayer, blackTime, whiteTime, onRestartGame }) => {
   return (
     <div className="timer">
       <div className="text">
@@ -28,7 +28,7 @@ export const Timer: FC<TimerProps> = ({ currentPlayer }) => {
         <p>White - {whiteTime}</p>
         {currentPlayer.color === COLORS.WHITE && <ArrowIcon/>}
       </div>
-      <button onClick={onRestartGame}>Restart game <RestartIcon/></button>
+      <RestartButton onClick={onRestartGame}/>
     </div>
   );
 };

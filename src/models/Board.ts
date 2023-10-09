@@ -1,4 +1,4 @@
-import { COLORS } from 'types';
+import { COLORS, FIGURES } from 'types';
 import { ROW_SIZE } from '../constants';
 import { Cell } from './Cell';
 import { Bishop } from './figures/Bishop';
@@ -99,5 +99,13 @@ export class Board {
 
   addLostFigure(figure: Figure) {
     figure.color === COLORS.BLACK ? this.lostBlackFigures.push(figure) : this.lostWhiteFigures.push(figure);
+  }
+
+  isDeadBlackKing() {
+    return !!this.lostBlackFigures.find(figure => figure.name === FIGURES.KING);
+  }
+
+  isDeadWhiteKing() {
+    return !!this.lostWhiteFigures.find(figure => figure.name === FIGURES.KING);
   }
 }
