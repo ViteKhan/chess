@@ -1,22 +1,16 @@
-import { usePlayers, useRestartBoard } from 'hooks';
+import { useChessContext } from 'hooks';
 import { BoardComponent } from '../Board';
 import { GameInfo } from '../GameInfo';
 import { LostFigures } from '../LostFigures';
 import './Chess.scss';
 
 export const Chess = () => {
-  const { currentPlayer, swapPlayer, setCurrentPlayer } = usePlayers();
-  const { board, setBoard, restart } = useRestartBoard(setCurrentPlayer);
+  const { board } = useChessContext();
 
   return (
     <>
-      <GameInfo currentPlayer={currentPlayer} restart={restart}/>
-      <BoardComponent
-        board={board}
-        setBoard={setBoard}
-        currentPlayer={currentPlayer}
-        swapPlayer={swapPlayer}
-      />
+      <GameInfo/>
+      <BoardComponent board={board}/>
       <div className="lostFigures">
         <h2>Lost figures</h2>
         <div className="lostContainer">

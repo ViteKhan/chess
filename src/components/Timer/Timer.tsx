@@ -9,11 +9,10 @@ import './Timer.scss';
 
 interface TimerProps {
   currentPlayer: Player;
-  restart: () => void;
 }
 
-export const Timer: FC<TimerProps> = ({ currentPlayer, restart }) => {
-  const { blackTime, whiteTime, onRestart } = useTimer(currentPlayer, restart);
+export const Timer: FC<TimerProps> = ({ currentPlayer }) => {
+  const { blackTime, whiteTime, onRestartGame } = useTimer();
 
   return (
     <div className="timer">
@@ -29,7 +28,7 @@ export const Timer: FC<TimerProps> = ({ currentPlayer, restart }) => {
         <p>White - {whiteTime}</p>
         {currentPlayer.color === COLORS.WHITE && <ArrowIcon/>}
       </div>
-      <button onClick={onRestart}>Restart game <RestartIcon/></button>
+      <button onClick={onRestartGame}>Restart game <RestartIcon/></button>
     </div>
   );
 };

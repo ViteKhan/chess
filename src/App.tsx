@@ -1,10 +1,13 @@
 import './App.scss';
 import { Chess } from 'components/Chess';
+import { ChessContextProvider } from 'providers';
 
 function App() {
   return (
     <div className="app">
-      <Chess/>
+      <ChessContextProvider>
+        <Chess/>
+      </ChessContextProvider>
     </div>
   );
 }

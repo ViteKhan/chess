@@ -1,13 +1,16 @@
 import { Board } from 'models/Board';
 import { Cell } from 'models/Cell';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Player } from 'models/Player';
 import { COLORS } from 'types';
+import { ChessContext } from 'providers';
+
+export const useChessContext = () => useContext(ChessContext);
 
 export const useRestartBoard = (setCurrentPlayer: (player: Player) => void) => {
   const [board, setBoard] = useState<Board>(new Board());
 
-  const restart = () => {
+  const restartBoard = () => {
     const newBoard = new Board();
     newBoard.initCells();
     newBoard.addFigures();
@@ -16,10 +19,10 @@ export const useRestartBoard = (setCurrentPlayer: (player: Player) => void) => {
   };
 
   useEffect(() => {
-    restart();
+    restartBoard();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return { board, setBoard, restart };
+  return { board, setBoard, restartBoard };
 };
 
 export const usePlayers = () => {
@@ -34,14 +37,14 @@ export const usePlayers = () => {
   return { currentPlayer, swapPlayer, setCurrentPlayer };
 };
 
-interface UseSelectedCellProps {
-  updateBoard: () => void;
-  currentPlayer: Player;
-  swapPlayer: () => void;
-}
-
-const useSelectedCell = ({ updateBoard, currentPlayer, swapPlayer }: UseSelectedCellProps) => {
+export const useSelectedCell = () => {
   const [selectedCell, setSelectedCell] = useState<Cell | null>(null);
+  const { board, setBoard, currentPlayer, swapPlayer, } = useChessContext();
+
+  const updateBoard = () => {
+    const newBoard = board.getCopyBoard();
+    setBoard(newBoard);
+  };
 
   const onSelectCellHandler = (cell: Cell) => {
     if (selectedCell && selectedCell !== cell && selectedCell.figure?.canMove(cell)) {
@@ -56,24 +59,6 @@ const useSelectedCell = ({ updateBoard, currentPlayer, swapPlayer }: UseSelected
     }
   };
 
-  return { selectedCell, onSelectCellHandler };
-};
-
-interface UseHighlightCellsAndUpdateBoardProps {
-  board: Board;
-  setBoard: (board: Board) => void;
-  currentPlayer: Player;
-  swapPlayer: () => void;
-}
-
-export const useHighlightCellsAndUpdateBoard = ({ board, setBoard, currentPlayer, swapPlayer }: UseHighlightCellsAndUpdateBoardProps) => {
-  const updateBoard = () => {
-    const newBoard = board.getCopyBoard();
-    setBoard(newBoard);
-  };
-
-  const {selectedCell, onSelectCellHandler} = useSelectedCell({ updateBoard, currentPlayer, swapPlayer });
-
   useEffect(() => {
     board.highlightCells(selectedCell);
     updateBoard();
@@ -82,10 +67,11 @@ export const useHighlightCellsAndUpdateBoard = ({ board, setBoard, currentPlayer
   return { selectedCell, onSelectCellHandler };
 };
 
-export const useTimer = (currentPlayer: Player, restart: () => void) => {
+export const useTimer = () => {
   const [blackTime, setBlackTime] = useState<number>(300);
   const [whiteTime, setWhiteTime] = useState<number>(300);
   const timer = useRef<ReturnType<typeof setInterval> | null>();
+  const { currentPlayer, restartBoard } = useChessContext();
 
   const decrementBlackTimer = () => {
     setBlackTime(prev => prev - 1);
@@ -104,20 +90,24 @@ export const useTimer = (currentPlayer: Player, restart: () => void) => {
     timer.current = setInterval(callback, 1000);
   };
 
-  useEffect(() => {
-    startTimer();
+  const resetTimers = () => {
     setBlackTime(300);
     setWhiteTime(300);
+  };
+
+  useEffect(() => {
+    startTimer();
+    resetTimers();
   }, [currentPlayer]);  // eslint-disable-line react-hooks/exhaustive-deps
 
-  const onRestart = () => {
+  const onRestartGame = () => {
     const confirmed = window.confirm('Are you sure you want to restart?');
     if (confirmed) {
-      setBlackTime(300);
-      setWhiteTime(300);
-      restart();
+      resetTimers();
+      restartBoard();
     }
   };
 
-  return { whiteTime, blackTime, onRestart };
+  return { whiteTime, blackTime, onRestartGame };
 };
+
